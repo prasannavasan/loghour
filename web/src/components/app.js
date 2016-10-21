@@ -3,6 +3,7 @@ import axios from 'axios';
 import CreateTodo from './create-todo';
 import TodoList from './todo-list';
 import Header from './header';
+import TimerService from '../services/hltimer';
 
 // load foundation
 require('style!css!foundation-sites/dist/foundation.min.css');
@@ -22,11 +23,7 @@ export default class App extends React.Component {
 
     init() {
         var self = this;
-        axios.get(BASE_URL + '/todos/getAll').then(function(response) {
-            self.setState({todos: response.data.result.Items});
-        }).catch(function(error) {
-            console.log(error);
-        });
+        TimerService.getProject();
     }
 
     render() {
@@ -55,7 +52,7 @@ export default class App extends React.Component {
         axios.put(BASE_URL + '/todos/status', {
             id: task.id,
             isCompleted: foundTodo.isCompleted
-        }).then(function(response) {            
+        }).then(function(response) {
         }).catch(function(error) {
             console.log(error);
         });
@@ -69,7 +66,7 @@ export default class App extends React.Component {
         axios.put(BASE_URL + '/todos/update', {
             id: oldTask.id,
             task: newTask
-        }).then(function(response) {            
+        }).then(function(response) {
         }).catch(function(error) {
             console.log(error);
         });
@@ -79,7 +76,7 @@ export default class App extends React.Component {
         var self = this;
         _.remove(self.state.todos, todo => todo.id === taskToDelete.id);
             self.setState({todos: self.state.todos});
-        axios.delete(BASE_URL + '/todos/delete/'+ taskToDelete.id).then(function(response) {            
+        axios.delete(BASE_URL + '/todos/delete/'+ taskToDelete.id).then(function(response) {
         }).catch(function(error) {
             console.log(error);
         });
