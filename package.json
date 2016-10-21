@@ -1,7 +1,8 @@
 {
   "name": "loghour",
   "version": "2.0.0",
-  "description": "basic boilerplate with offline development setup",
+  "description": "Loghour time tracking tool for github",
+  "private": true,
   "main": "index.js",
   "dependencies": {
     "gulp": "3.9.1",
@@ -14,25 +15,23 @@
   "scripts": {
     "preinstall": "cd web && npm install",
     "postinstall": "cd serverless && npm install",
-    "db-setup": "cd serverless && sls dynamodb install",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mjzone/serverless-boilerplate.git"
+    "url": "git+https://github.com/99xt/loghour.git"
   },
   "keywords": [
-    "serverless",
-    "boilerplate",
-    "aws",
-    "offline"
+    "time",
+    "time tracking",
+    "serverless"
   ],
-  "author": "Manoj Fernando <manojf@99x.lk>",
+  "author": "99XTechnology",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mjzone/serverless-boilerplate/issues"
+    "url": "https://github.com/99xt/loghour/issues"
   },
-  "homepage": "https://github.com/mjzone/serverless-boilerplate#readme",
+  "homepage": "https://github.com/99xt/loghour.git#readme",
   "devDependencies": {
     "opn": "4.0.2"
   }

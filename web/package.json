@@ -1,8 +1,9 @@
 {
-  "name": "client",
+  "name": "webclient",
   "version": "1.0.0",
-  "description": "Simple todo application that uses serverless basic boilerplate as backend",
+  "description": "Loghour React App",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "start": "node server.js"
   },

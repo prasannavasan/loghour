@@ -15,34 +15,20 @@ service: loghour
 
 package:
   exclude:
-    - node_modules/dynamodb-localhost/**
-    - node_modules/serverless-dynamodb-local/**
+    - node_modules/serverless-offline/**
 
 provider:
   name: aws
   runtime: nodejs4.3
   region: us-east-1
   stage: dev
-  iamRoleStatements:
-    - Effect: "Allow"
-      Action:
-        - "dynamodb:*"
-      Resource:
-        - "arn:aws:dynamodb:us-east-1:*"
 
 plugins:
   - serverless-offline
-  - serverless-dynamodb-local
   - serverless-plugin-write-env-vars
 
 custom:
   stage: ${opt:stage, self:provider.stage}
-  dynamodb:
-    start:
-      migration: true
-    migration:
-      dir: offline/migrations
-      table_prefix: ${self:custom.stage}
   writeEnvVars:
     REMOTE_STAGE: ${self:custom.stage}
 
