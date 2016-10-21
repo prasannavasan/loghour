@@ -4,8 +4,7 @@ var gulp = require('gulp'),
     webpack = require('webpack'),
     exec = require('child_process').exec,
     util = require('gulp-util'),
-    gulpSequence = require('gulp-sequence'),
-    stage = null;
+    gulpSequence = require('gulp-sequence');
 
 function runCommand(cmd, done) {
     var ls = exec(cmd);
@@ -37,7 +36,7 @@ gulp.task('open-website', function(done) {
 
 /* Deploy Lambdas and API Gateway to AWS */
 gulp.task('deploy-api', function(cb) {
-    runCommand('cd serverless' + commandSeparator + ' sls deploy ' + stage + ' -v');
+    runCommand('cd serverless' + commandSeparator + ' sls deploy --stage ' + (util.env.stage || 'dev') + ' -v');
 });
 
 /* Deploy service in AWS */

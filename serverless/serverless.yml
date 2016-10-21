@@ -11,7 +11,7 @@
 #
 # Happy Coding!
 
-service: loghour
+service: loghour-api
 
 package:
   exclude:
@@ -20,7 +20,7 @@ package:
 provider:
   name: aws
   runtime: nodejs4.3
-  region: us-east-1
+  region: eu-west-1
   stage: dev
 
 plugins:
@@ -29,20 +29,20 @@ plugins:
 
 custom:
   stage: ${opt:stage, self:provider.stage}
+  client_secret: ${opt:client_secret, self:provider.client_secret}
+  client_id: ${opt:client_id, self:provider.client_id}
   writeEnvVars:
     REMOTE_STAGE: ${self:custom.stage}
+    GITHUB_CLIENT_SECRET: ${self:custom.client_secret}
+    GITHUB_CLIENT_ID: ${self:custom.client_id}
 
 functions:
-  loghour:
-    handler: handlers/loghour/handler.loghour
+  authorize:
+    handler: handlers/authorize/index.handler
     events:
       - http:
           method: GET
-          path: loghour
+          path: authorize/{code}
           integration: lambda
           cors: true
           request: ${file(./templates.yml):request}
-          response:
-            headers:
-              Content-Type: "'text/html'"
-            template: $input.path('$')
