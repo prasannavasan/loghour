@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import CreateTodo from './create-todo';
 import TodoList from './todo-list';
+import Header from './header';
 
 // load foundation
 require('style!css!foundation-sites/dist/foundation.min.css');
@@ -31,11 +32,8 @@ export default class App extends React.Component {
     render() {
         return (
             <div>
-                <div className="row large-6 large-offset-5 medium-6 medium-offset-5 small-6 small-offset-5 columns">
-                    <h3>My Todo List</h3>
-                </div>
-                <CreateTodo createTask={this.createTask.bind(this)}/>
-                <TodoList todos={this.state.todos} toggleTask={this.toggleTask.bind(this)} saveTask={this.saveTask.bind(this)} deleteTask={this.deleteTask.bind(this)}/>
+                <Header />
+                {this.props.children}
             </div>
         );
     }
