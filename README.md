@@ -16,3 +16,17 @@ npm install
 ```
 npm install serverless@1.0 webpack webpack-dev-server -g
 ```
+
+* Initialize Serverless Project
+
+1) Create a AWS User with Credentials and Grant Administrator Access Policy
+http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
+
+2) Set Up the AWS Command Line Interface
+http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html
+
+3) Go to the project root folder and execute the following command
+```
+gulp deploy-api dev
+```
+Note:- Here 'dev' is the Stage and You can use a different Stage also
