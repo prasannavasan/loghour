@@ -12,6 +12,8 @@
     "aws-sdk": "^2.6.1",
     "bluebird": "^3.4.6",
     "dotenv": "2.0.0",
+    "lodash": "^4.16.2",
+    "request": "^2.75.0",
     "serverless-plugin-write-env-vars": "1.0.1"
   },
   "devDependencies": {
