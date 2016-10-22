@@ -4,6 +4,7 @@ import CreateTodo from './create-todo';
 import TodoList from './todo-list';
 import Header from './header';
 import TimerService from '../services/hltimer';
+import GHService from '../services/githubservice';
 
 // load foundation
 require('style!css!foundation-sites/dist/foundation.min.css');
@@ -23,7 +24,7 @@ export default class App extends React.Component {
 
     init() {
         var self = this;
-        TimerService.getProject();
+        GHService.getOrgList('rehrumesh');
     }
 
     render() {
